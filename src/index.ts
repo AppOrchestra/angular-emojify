@@ -1,4 +1,4 @@
-import { NgModule, Pipe, PipeTransform } from '@angular/core';
+import { NgModule, ModuleWithProviders, Pipe, PipeTransform } from '@angular/core';
 import { emojify } from 'node-emoji';
 
 @Pipe({
@@ -14,4 +14,12 @@ export class EmojifyPipe implements PipeTransform {
   declarations: [EmojifyPipe],
   exports: [EmojifyPipe]
 })
-export class EmojifyModule { }
+export class EmojifyModule {
+
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: EmojifyModule
+        }
+    }
+
+}
